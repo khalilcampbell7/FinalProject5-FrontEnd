@@ -20,9 +20,9 @@ const Home = () =>{
     const classes = useStyles();
 
     return (
-        <div className={classes.container}>
+       <div className={classes.container}>
             <img src={fishPhoto} alt='fishing' className={classes.img}/>
-        </div>
+        </div> 
     )
 }
 

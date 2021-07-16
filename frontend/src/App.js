@@ -4,6 +4,8 @@ import React from "react";
 import Home from './Components/Home'
 import ViewBlog from './Components/ViewBlog'
 import AddBlog from './Components/AddBlog'
+import BlogPost from './Components/BlogPost'
+
 
 import {
   BrowserRouter as Router,
@@ -26,6 +28,9 @@ export default function App() {
           </Route>
           <Route exact path="/addblog">
             <AddBlog />
+          </Route>
+          <Route exact path="/blog">
+            <BlogPost />
           </Route>
         </Switch>
     </Router>
