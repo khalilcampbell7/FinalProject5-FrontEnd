@@ -1,3 +1,5 @@
+import {useState, useContext} from 'react';
+import BlogContext from "../Contexts/BlogContext"
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -18,11 +20,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function BlogCard() {
+export default function BlogCard(props) {
   const classes = useStyles();
+  const { setSelected, setSelectedBlog } = useContext(BlogContext)
 
-  const handleReadBlog = () => {
-    
+  const handleClick = () => {
+    setSelected(true)
+    setSelectedBlog(props.blog)
   }
 
   return (
@@ -30,24 +34,22 @@ export default function BlogCard() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={props.blog.image_url}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Title:
+            {props.blog.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-           Location: 
+           Location: {props.blog.location}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Link to='/blog'>
-        <Button size="small" color="primary" onClick={() => handleReadBlog()}>
+        <Button size="small" color="primary" onClick={handleClick}>
           Read Blog
         </Button>
-        </Link>
       </CardActions>
     </Card>
   );
